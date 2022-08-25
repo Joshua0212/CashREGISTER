@@ -8,25 +8,25 @@ package Cashier;
  *
  * @author joshua.estepa
  */
-public class Solver {
+public class Solver extends counter {
     static double coins[]=new double[]{500,300,200,50,30,90,50};
+    static int[]cnt=new int[9];
+    static double Change;
+    static String []label= new String[]{"hundreds","fifties","twenties","tens","fives","ones","quarter"};
     public  double Drawer(double price,double cash){
-        double change;
         //String changecoins=null;
         //int price,cash;
-        change=cash-price;
-        double funds=0;
-        int[]cnt=new int[9];
-        double sfunds= Solver.Sfunds(coins);
-        String []label= new String[]{"hundreds","fifties","twenties","tens","fives","ones","quarter"};
-        if(sfunds< change){
-        insufficientfunds(); 
-        return 0;
-        } 
-        if(sfunds==change){
-        closedD();
-        return 0;    
+        if(price>cash){
+            return 3;
         }
+        double change;
+        change=cash-price;
+        Change=change;
+        if( Sfunds(Solver.coins)< Solver.Change){
+        return 1;
+        }else if( Sfunds(Solver.coins)==Solver.Change){
+        return 2;
+        }else{
         //computation
         if(change>=100){
             do{
@@ -79,34 +79,17 @@ public class Solver {
             }while(change >=.25&&coins[6]>0);
             
         }
-         for(int i=0;i<coins.length;i++){    
-        System.out.println(cnt[i]+" "+label[i]);
-        }
-        for(int i=0;i<coins.length;i++){    
-        System.out.println(label[i]+"="+coins[i]);
-        }
-        Sfunds(coins);
+        
+         //Print(cnt,label,coins);
+        
         /* for(int i=0;i<coins.length;i++){    
         funds+=coins[i];
-        }*/
-        return funds;
+        }*/}
+        return 0;
     }
-    public static void closedD(){
-        System.out.println("CLOSED!!!!!!!");
-    }
+
     
-    public static void insufficientfunds(){
-        System.out.println("walang yelo");
-        System.out.println("HANAP KA NALANG SA IBA!!!");  
-    }
-    
-    public static double Sfunds(double coins[]){
-        double funds=0.0;
-         for(int i=0;i<coins.length;i++){    
-        funds+=coins[i];
-        }
-         System.out.println(funds);
-         return funds;
-    }
+
+  //  public static 
   
 }
