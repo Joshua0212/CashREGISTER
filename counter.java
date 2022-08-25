@@ -29,13 +29,13 @@ public void Print(){
     String c=String.valueOf(Sfunds(Solver.coins));
         jLabel5.setText("Change:"+String.valueOf(Solver.Change));
         jLabel4.setText("Cash Left:"+c);
-       
+        jLabel6.setText("Status: Good");
         x=1;
    
 }
     public void closedD(){
        jLabel6.setText("Status: closed");
-       System.out.println("shit");
+       
     }
     
     public void insufficientfunds(){
@@ -51,7 +51,6 @@ public void Print(){
          for(int i=0;i<coins.length;i++){    
         funds+=coins[i];
         }
-         System.out.println(funds);
          return funds;
     }
     public void Tableclear(){
